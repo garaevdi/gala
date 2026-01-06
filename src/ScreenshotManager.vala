@@ -330,18 +330,18 @@ public class Gala.ScreenshotManager : Object {
         }
 
         Meta.Window[] transients = {};
-        foreach (unowned var win in window.display.list_all_windows ()) {
-            if (win != window &&
-                win.find_root_ancestor () == window &&
-                (win.window_type == MENU ||
-                win.window_type == DROPDOWN_MENU ||
-                win.window_type == POPUP_MENU ||
-                win.window_type == TOOLTIP ||
-                win.window_type == OVERRIDE_OTHER)
+        window.foreach_transient ((transient) => {
+            if (transient.window_type == MENU ||
+                transient.window_type == DROPDOWN_MENU ||
+                transient.window_type == POPUP_MENU ||
+                transient.window_type == TOOLTIP ||
+                transient.window_type == OVERRIDE_OTHER
             ) {
-                transients += win;
+                transients += transient;
             }
-        };
+
+            return true;
+        });
 
         var main_rect = include_frame ? window.get_buffer_rect () : window.get_frame_rect ();
         var full_rect = main_rect;
