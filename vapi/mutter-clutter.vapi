@@ -7369,11 +7369,8 @@ namespace Clutter {
 #endif
 		public virtual Clutter.PaintFlag get_default_paint_flags ();
 		public unowned Cogl.Framebuffer get_framebuffer ();
-#if HAS_MUTTER49
-		public void get_layout (Mtk.Rectangle rect);
-#else
+// This function probably should always require `ref Mtk.Rectangle` even if generated vapi says otherwise
 		public void get_layout (ref Mtk.Rectangle rect);
-#endif
 #if HAS_MUTTER47
 		public void get_offscreen_transformation_matrix (Graphene.Matrix matrix);
 #else
