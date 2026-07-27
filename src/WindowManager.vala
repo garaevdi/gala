@@ -114,6 +114,8 @@ namespace Gala {
 
         private LockScreenManager lock_screen_manager;
 
+        private BrightnessManager brightness_manager;
+
         private Gee.LinkedList<ModalProxy> modal_stack = new Gee.LinkedList<ModalProxy> ();
 
         private Gee.HashSet<Meta.WindowActor> minimizing = new Gee.HashSet<Meta.WindowActor> ();
@@ -160,7 +162,8 @@ namespace Gala {
             filter_manager = new FilterManager (this);
             notifications_manager = new NotificationsManager ();
             screenshot_manager = new ScreenshotManager (this, notifications_manager, filter_manager);
-            DBus.init (this, notifications_manager, screenshot_manager);
+            brightness_manager = new BrightnessManager (get_display ());
+            DBus.init (this, notifications_manager, screenshot_manager, brightness_manager);
 
             unowned Meta.Display display = get_display ();
             display.gl_video_memory_purged.connect (() => {
