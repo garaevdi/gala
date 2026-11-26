@@ -78,6 +78,10 @@ config_h = configure_file(
 
 gala_dep = declare_dependency(link_with: [gala_lib], include_directories: include_directories('.'))
 
+if meson.is_subproject()
+    meson.override_dependency('gala', gala_dep)
+endif
+
 pkg.generate(
     gala_lib,
     filebase: 'gala',
