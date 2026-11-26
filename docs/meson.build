@@ -17,7 +17,7 @@ basic_command = [
     '--pkg', 'posix',
     vala_flags,
     '--vapidir=' + join_paths(meson.project_build_root(), 'lib'),
-    '--vapidir=' + join_paths(meson.global_source_root(), 'vapi'),
+    '--vapidir=' + join_paths(meson.project_source_root(), 'vapi'),
     '--doclet=html',
     '--use-svg-images'
 ]
@@ -47,7 +47,7 @@ all_doc_target = custom_target(
         '--pkg', 'libsystemd',
         '--pkg', 'wayland-server',
         '--pkg', 'pantheon-desktop-shell',
-        '--vapidir=' + join_paths(meson.global_source_root(), 'protocol'),
+        '--vapidir=' + join_paths(meson.project_source_root(), 'protocol'),
         '-o', '@OUTPUT@',
         '@INPUT@'
     ],

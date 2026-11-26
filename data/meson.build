@@ -12,7 +12,7 @@ install_data(
 i18n.merge_file(
     input: 'gala.metainfo.xml.in',
     output: meson.project_name() + '.metainfo.xml',
-    po_dir: meson.global_source_root() / 'po',
+    po_dir: meson.project_source_root() / 'po',
     type: 'xml',
     install: true,
     install_dir: get_option('datadir') / 'metainfo',
@@ -21,7 +21,7 @@ i18n.merge_file(
 i18n.merge_file(
     input: 'gala-multitaskingview.desktop.in',
     output: 'gala-multitaskingview.desktop',
-    po_dir: join_paths(meson.global_source_root (), 'po'),
+    po_dir: join_paths(meson.project_source_root (), 'po'),
     type: 'desktop',
     install: true,
     install_dir: join_paths(data_dir, 'applications')
@@ -30,7 +30,7 @@ i18n.merge_file(
 i18n.merge_file(
     input: 'gala-other.desktop.in',
     output: 'gala-other.desktop',
-    po_dir: join_paths(meson.global_source_root (), 'po'),
+    po_dir: join_paths(meson.project_source_root (), 'po'),
     type: 'desktop',
     install: true,
     install_dir: join_paths(data_dir, 'applications')
